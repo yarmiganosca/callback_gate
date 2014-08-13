@@ -14,6 +14,7 @@ define(function () {
     removeLock: function (lock) {
       if (typeof this.locks[lock] !== 'undefined') {
         delete this.locks[lock];
+
         if (this.isUnlocked()) {
           this.runCallbacks();
         }
