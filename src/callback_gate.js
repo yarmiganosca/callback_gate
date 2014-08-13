@@ -5,13 +5,13 @@ define(function () {
       this.locks = {};
     },
 
-    addLocks:  function () {
+    addLocks: function () {
       for (var i = 0; i < arguments.length; i++) {
         this.locks[arguments[i]] = true;
       }
     },
 
-    removeLock:  function (lock) {
+    removeLock: function (lock) {
       if (typeof this.locks[lock] !== 'undefined') {
         delete this.locks[lock];
         if (this.isUnlocked()) {
@@ -20,18 +20,18 @@ define(function () {
       }
     },
 
-    isUnlocked:  function () {
+    isUnlocked: function () {
       for (var lock in this.locks) {
         return false;
       }
       return true;
     },
 
-    addCallback:  function (callback) {
+    addCallback: function (callback) {
       this.callbacks.push(callback);
     },
 
-    runCallbacks:  function () {
+    runCallbacks: function () {
       while (this.callbacks.length > 0) {
         var callback = this.callbacks.pop();
         callback();
